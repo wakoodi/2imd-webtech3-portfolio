@@ -1,5 +1,13 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    text-align: center;
+}
+
 .grid{
-   
+    display: grid;
+    grid-template: repeat(10,100px) / 100%;
+    grid-gap: 10px;
 }
 
 .homework{
