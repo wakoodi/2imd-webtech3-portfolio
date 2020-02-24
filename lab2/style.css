@@ -7,7 +7,7 @@ body{
 .grid{
     display: grid;
     grid-template: repeat(10,100px) / 100%;
-    grid-gap: 10px;
+    grid-gap: 15px;
 }
 
 .homework{
@@ -21,3 +21,13 @@ body{
 .cloud{
    background-color: #FDFF00;
 }
+
+@media screen and (min-width: 700px){
+
+    .grid{
+        grid-template: repeat(5, 100px) / 50% 50%;
+   
+    }
+
+}
+
