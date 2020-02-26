@@ -1,0 +1,71 @@
+  .grid {
+    display: grid;
+    grid-template-columns:repeat(2,125px);
+    grid-template-rows: 80px 350px 30px 30px;
+    grid-template-areas: "header header" "qr qr" "date admit" "price price";
+    text-align: center;
+    background-image: url(image\ 2.png);
+    background-repeat: no-repeat;
+    width: 250px;
+    font-family: sans-serif;
+    line-height: 10px;
+    box-sizing: border-box;
+  }
+
+  .desktop{
+    display: none;
+  }
+
+  .frustrated{
+    display: none;
+  }
+  
+  .header { 
+    grid-area: header; 
+    color: white;
+    background-color: black;
+    width: 250px;
+    text-align: center;
+  }
+
+  .header h1{
+    padding-top: 8px;
+    font-size: 25px;
+  }
+  .header p{
+    font-size: 15px;
+  }
+  
+  .qr { 
+    grid-area: qr; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+  }
+
+  .qr img{
+    width: 150px;
+  }
+  
+  .date { 
+    grid-area: date; 
+    border: solid black 1px;
+    font-size: 11px;
+    font-weight: bolder;
+  }
+  
+  .admit { 
+    grid-area: admit; 
+    border: solid black 1px;
+    border-left: none;
+    font-size: 11px;
+    font-weight: bolder;
+  }
+  
+  .price { 
+    grid-area: price; 
+    border: solid black 1px;
+    border-top: none;
+    font-size: 11px;
+    font-weight: bold;
+  }
