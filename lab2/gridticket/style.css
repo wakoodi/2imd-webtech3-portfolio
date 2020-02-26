@@ -74,3 +74,88 @@
     font-size: 11px;
     font-weight: bold;
   } 
+
+
+  @media screen and (min-width: 850px){
+
+    body{
+      background-image: url(image\ 3.png);
+      background-repeat: no-repeat;
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(3,1fr) 1.5fr;
+      grid-template-rows: 200px 50px 30px;
+      grid-template-areas: "header  header header qr" "date admit price qr" "frustrated frustrated frustrated qr" ;
+      border: 1px solid black;
+      background-image: none;
+      width: 880px;
+      line-height: 0px;
+    }
+
+    .desktop{
+      display: grid;
+    }
+
+    .mobile{
+      display: none;
+    }
+
+    .header{ 
+      grid-area: header; 
+      color: black;
+      background-color: transparent;
+      width: auto;
+      padding-top: 50px;
+    }
+
+    .header h1{
+      font-size: 65px;
+    }
+
+    .header p{
+      padding-bottom: 20px;
+      font-size: 18px;
+    }
+
+    .qr { 
+      grid-area: qr;       
+      border-left: 1px solid black;
+    }
+  
+    .qr img{
+      width: 200px;
+    }
+    
+    .date { 
+      font-size: 18px;
+      padding: 8px;
+      border: none;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+    }
+    
+    .admit { 
+      font-size: 18px;
+      padding: 8px;
+      border: 1px solid black;
+    }
+    
+    .price { 
+      font-size: 18px;
+      padding: 8px;
+      border: none;
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+    }
+
+    .frustrated { 
+      grid-area: frustrated; 
+      display: grid;
+      font-size: 11px;
+      padding: 5px;
+    }
+
+  }
+
