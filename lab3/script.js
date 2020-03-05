@@ -11,15 +11,19 @@ class Note {
     let newP = document.createElement("p"); // <p>Todo</p>
     newP.innerHTML = title;
 
-    newNote.appendChild(newP); // <div class="card"><p>Todo</p></div>
+    let newA = document.createElement("a");
+    newA.setAttribute("class", "card-remove");
+    newA.innerHTML = "Remove";
 
-    // HINT🤩 a.addEventListener('click', this.remove.bind(newNote));
+    newNote.appendChild(newP); // <div class="card"><p>Todo</p></div>
+    newNote.appendChild(newA); 
+
+    newA.addEventListener('click', this.remove.bind(newNote));
 
     return newNote;
   }
 
   add() {
-    // HINT🤩
     // this function should append the note to the screen somehow
     document.querySelector(".notes").appendChild(this.element);
   }
@@ -31,8 +35,9 @@ class Note {
   }
 
   remove() {
-    // HINT🤩 the meaning of 'this' was set by bind() in the createElement function
+    // the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
+    this.remove();
   }
 }
 
@@ -42,9 +47,15 @@ class App {
 
     // HINT🤩
     // clicking the button should work
-    // pressing the enter key should also work
+    
     this.btnAdd = document.querySelector("#btnAddNote");
     this.btnAdd.addEventListener("click",  this.createNote.bind(this));
+   
+    // pressing the enter key should also work
+
+
+
+
     // this.loadNotesFromStorage();
   }
 
@@ -56,14 +67,13 @@ class App {
 
   createNote(e) {
     // this function should create a new note by using the Note() class
-
-    // HINT🤩
     let text = document.querySelector("#txtAddNote").value;
     console.log(text);
 
     let note = new Note(text);
     //console.log(note.element);
     note.add();
+  
     // note.saveToStorage();
     // this.reset();
   }
