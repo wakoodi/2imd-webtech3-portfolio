@@ -32,6 +32,13 @@ class Note {
     // HINT🤩
     // localStorage only supports strings, not arrays
     // if you want to store arrays, look at JSON.parse and JSON.stringify
+    let local = JSON.parse(localStorage.getItem(`local`));
+    if(local == null){
+      local =[];
+    }
+    local.push(this.title);
+    console.log(local);
+    localStorage.setItem(`local`, JSON.stringify(local));
   }
 
   remove() {
@@ -63,7 +70,7 @@ class App {
       }
     });
 
-    // this.loadNotesFromStorage();
+    this.loadNotesFromStorage();
   }
 
   loadNotesFromStorage() {
@@ -81,13 +88,13 @@ class App {
     //console.log(note.element);
     note.add();
   
-    // note.saveToStorage();
+    note.saveToStorage();
     this.reset();
   }
 
   reset() {
     // this function should reset the form 
-    document.getElementById('txtAddNote').value = ''
+    document.getElementById('txtAddNote').value = '';
     
   }
 
