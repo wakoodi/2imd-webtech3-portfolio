@@ -54,7 +54,14 @@ class App {
     // pressing the enter key should also work
 
 
-
+    let inputText = document.querySelector("#txtAddNote");
+    inputText.addEventListener('keydown', enter => {
+      if(enter.keyCode === 13){
+        enter.preventDefault();
+        document.querySelector("#btnAddNote").click();
+        return true;
+      }
+    });
 
     // this.loadNotesFromStorage();
   }
