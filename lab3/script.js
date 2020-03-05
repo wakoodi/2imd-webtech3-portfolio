@@ -37,14 +37,25 @@ class Note {
       local =[];
     }
     local.push(this.title);
-    console.log(local);
+    //console.log(local);
     localStorage.setItem(`local`, JSON.stringify(local));
   }
 
   remove() {
     // the meaning of 'this' was set by bind() in the createElement function
     // in this function, 'this' will refer to the current note element
+    this.addEventListener(`click`, e => {e.preventDefault();});
+
+    let arr = JSON.parse(localStorage.getItem(`local`));
+    let title = this.querySelector(`p`).innerHTML;
+    let key= arr.indexOf(title); 
+
+    arr.splice(key, 1);
+
+    localStorage.setItem(`local`, JSON.stringify(arr));
+
     this.remove();
+
   }
 }
 
@@ -77,12 +88,19 @@ class App {
     // HINT🤩
     // load all notes from storage here and add them to the screen
     // something like note.add() in a loop would be nice
+
+    let data = JSON.parse(localStorage.getItem(`local`));
+
+      if(data.length > 0) {
+        data.forEach(title => {let note = new Note(title); note.add();});
+      }
+
   }
 
   createNote(e) {
     // this function should create a new note by using the Note() class
     let text = document.querySelector("#txtAddNote").value;
-    console.log(text);
+    //console.log(text);
 
     let note = new Note(text);
     //console.log(note.element);
