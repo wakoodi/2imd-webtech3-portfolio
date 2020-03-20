@@ -3,6 +3,7 @@ class App{
         this.getLocation();
         this.lat;
         this.lng;
+        this.getHero();
     }
 
     getLocation(){
@@ -37,9 +38,30 @@ class App{
             });
     }
 
+
     errorLocation(err){
         console.log(err);
     }
+
+    getHero(){
+        //https://superheroapi.com/api/access-token
+        const key = "2800701240020944";
+        const cors = "https://cors-anywhere.herokuapp.com/";
+        const characterid = Math.floor(Math.random() * 731) + 1 
+        let url = `${cors}https://superheroapi.com/api/${key}/${characterid}`;
+        fetch(url)
+            .then(response =>{
+               // console.log(response);
+               return response.json();
+            }).then(data =>{
+               // console.log(data);
+                document.querySelector("#heroimg").src = data.image.url;
+                document.querySelector("#hero").innerHTML = data.name;
+            }).catch(err =>{
+                console.log(err);
+            });
+    }
+
 }
 
 let app = new App();
