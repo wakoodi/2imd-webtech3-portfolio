@@ -33,6 +33,7 @@ class App{
             }).then(data =>{
                 //console.log(data);
                 document.querySelector("#weather").innerHTML = data.currently.summary;
+                document.querySelector("#temperature").innerHTML = "Current temperature : " + data.currently.temperature + " degrees ";
             }).catch(err =>{
                 console.log(err);
             });
