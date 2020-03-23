@@ -1,9 +1,7 @@
 class App{
     constructor(){
-        this.getLocation();
         this.lat;
         this.lng;
-        this.getHero();
         this.localStorage();
     }
 
@@ -12,12 +10,13 @@ class App{
         this.gotLocation.bind(this),
         this.errorLocation.bind(this)
         );
+
+        
     }
 
     getNow(){
         let now = new Date();
         localStorage.setItem("cleared", now.getTime());
-
         return now;
     }
 
@@ -47,9 +46,8 @@ class App{
                 console.log(err);
             });
 
-        
+                
 
-        this.getNow();
     }
 
 
@@ -88,14 +86,14 @@ class App{
 
         if(weather && cleared) {
             let atThisMoment = new Date();
-            if(((atThisMoment.getTime()-cleared)/1000/100)>= 60){
+            if(((atThisMoment.getTime()-cleared)/1000/100)>= 1){
                 this.getNow();
+                this.getLocation();           
             }
         }else{
-            this.getWeather();
-
+            this.getLocation();
         }
-
+        this.getHero(); 
 
 
 
