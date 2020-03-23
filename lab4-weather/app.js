@@ -4,6 +4,7 @@ class App{
         this.lat;
         this.lng;
         this.getHero();
+        this.localStorage();
     }
 
     getLocation(){
@@ -11,6 +12,13 @@ class App{
         this.gotLocation.bind(this),
         this.errorLocation.bind(this)
         );
+    }
+
+    getNow(){
+        let now = new Date();
+        localStorage.setItem("cleared", now.getTime());
+
+        return now;
     }
 
     gotLocation(result){
@@ -34,9 +42,14 @@ class App{
                 //console.log(data);
                 document.querySelector("#weather").innerHTML = data.currently.summary;
                 document.querySelector("#temperature").innerHTML = "Current temperature : " + data.currently.temperature + " degrees ";
+                localStorage.setItem("weather", JSON.stringify(data));
             }).catch(err =>{
                 console.log(err);
             });
+
+        
+
+        this.getNow();
     }
 
 
@@ -62,6 +75,45 @@ class App{
                 console.log(err);
             });
     }
+
+    localStorage() {
+        let weather = JSON.parse(localStorage.getItem("weather"));
+        /*if(weather == null){
+          weather =[];
+        }
+        weather.push(this.data);*/
+        localStorage.setItem("weather", JSON.stringify(weather));
+
+        let cleared = localStorage.getItem("cleared");
+
+        if(weather && cleared) {
+            let atThisMoment = new Date();
+            if(((atThisMoment.getTime()-cleared)/1000/100)>= 60){
+                this.getNow();
+            }
+        }else{
+            this.getWeather();
+
+        }
+
+
+
+
+      }
+
+   /*removeLocal() {
+
+        var cleared = localStorage.getItem('clear');
+        var now  = (new Date()).getTime();
+      
+        if ((now - cleared) > 1000 * 60 * 60) {
+      
+          localStorage.clear();
+      
+          localStorage.setItem('clear', now);
+        }
+      
+    }*/
 
 }
 
