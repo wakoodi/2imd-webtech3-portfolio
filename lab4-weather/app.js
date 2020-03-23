@@ -9,14 +9,13 @@ class App{
         navigator.geolocation.getCurrentPosition(
         this.gotLocation.bind(this),
         this.errorLocation.bind(this)
-        );
-
-        
+        );        
     }
 
     getNow(){
         let now = new Date();
-        localStorage.setItem("cleared", now.getTime());
+        localStorage.setItem("time", now.getTime());
+        this.getLocation();
         return now;
     }
 
@@ -45,9 +44,6 @@ class App{
             }).catch(err =>{
                 console.log(err);
             });
-
-                
-
     }
 
 
@@ -82,21 +78,17 @@ class App{
         weather.push(this.data);*/
         localStorage.setItem("weather", JSON.stringify(weather));
 
-        let cleared = localStorage.getItem("cleared");
+        let time = localStorage.getItem("time");
 
-        if(weather && cleared) {
+        if(weather && time) {
             let atThisMoment = new Date();
-            if(((atThisMoment.getTime()-cleared)/1000/100)>= 1){
-                this.getNow();
-                this.getLocation();           
-            }
+            if(((atThisMoment.getTime()-time))/1000 > 3600){
+                this.getNow(); 
+            }  
         }else{
             this.getLocation();
         }
         this.getHero(); 
-
-
-
       }
 
    /*removeLocal() {
