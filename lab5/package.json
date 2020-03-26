@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/nodemon ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
