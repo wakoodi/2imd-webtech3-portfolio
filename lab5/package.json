@@ -1,6 +1,9 @@
 {
   "name": "lab5",
   "version": "0.0.0",
+  "engines":{
+    "node": "13.10.1"
+  },
   "private": true,
   "scripts": {
     "start": "./node_modules/.bin/nodemon ./bin/www"
