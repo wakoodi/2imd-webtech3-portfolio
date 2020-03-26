@@ -13,14 +13,5 @@ router.put('/:id', apiV1MessagesController.updateOne)
 
 router.delete('/:id', apiV1MessagesController.removeOne)
 
-/*router.get('?user=username', (req, res) => {
-    res.json({
-        "status" : "success",
-        "data" : {
-            "message": "GETTING message for username " + req.params.username
-        }
-    })
-})*/
-
 
 module.exports = router
