@@ -1,30 +1,25 @@
-const http = require('http');
+const express = require('express')
+const app = express()
+const port = 3000
 
-const hostname = '127.0.0.1';
-const port = 3000;
+app.get('/', (req, res) => {
+    res.send('eenvoudige homepage')
+})
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-    
-    switch(req.url){
-        case "/":
-            res.end("homepage!");
-            break;
+//GET /api/v1/messages
 
-        case "/api/v1/messages":
-            res.end("getting messages");
-            break;
+//GET /api/v1/messages/:id
 
-        case "/api/v1/messages/:id":
-            res.end("getting messages with id");
-            break;
-        
-        default:
-            res.end("Hello, world!");
-    }
-});
+//POST /api/v1/messages
 
-server.listen(port, hostname, ()=>{
-    console.log('Server running at http://${hostname}:${port}/');
-});
+//PUT /api/v1/messages/:id
+
+//DELETE /api/v1/messages/:id
+
+//GET /api/v1/messages?user=username
+
+
+
+app.listen(port, () => {
+    console.log(`listening on port ${port}`)
+})
