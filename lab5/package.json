@@ -6,7 +6,8 @@
   },
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node fileName.js",
+    "start:dev": "nodemon fileName.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
