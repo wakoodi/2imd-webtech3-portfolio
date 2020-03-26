@@ -12,7 +12,9 @@ app.get('/api/v1/messages', (req, res) => {
 })
 
 //GET /api/v1/messages/:id
-
+app.get('/api/v1/messages/:id', (req, res) => {
+    res.send('GET messages' + req.params.id)
+})
 
 //POST /api/v1/messages
 app.post('/api/v1/messages', (req, res) => {
@@ -23,7 +25,11 @@ app.post('/api/v1/messages', (req, res) => {
 app.put('/api/v1/messages/:id', (req, res) => {
     res.send('PUT messages' + req.params.id)
 })
+
 //DELETE /api/v1/messages/:id
+app.delete('/api/v1/messages/:id', (req, res) => {
+    res.send('DELETE messages' + req.params.id)
+})
 
 //GET /api/v1/messages?user=username
 
